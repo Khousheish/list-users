@@ -1,0 +1,278 @@
+{
+  "root": true,
+  "ignorePatterns": [
+     "projects/**/*.{js,css,json}"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "*.ts"
+      ],
+      "parserOptions": {
+        "project": [
+          "tsconfig.json"
+        ],
+        "createDefaultProgram": true
+      },
+      "plugins": [
+        "@typescript-eslint",
+        "import",
+        "prefer-arrow",
+        "no-null",
+        "rxjs"
+      ],
+      "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@angular-eslint/recommended",
+        "plugin:@angular-eslint/template/process-inline-templates",
+        "plugin:rxjs/recommended",
+        "plugin:prettier/recommended"
+      ],
+      "settings": {
+        "import/parsers": {
+          "@typescript-eslint/parser": [".ts"]
+        },
+        "import/resolver": {
+          "typescript": {
+            "alwaysTryTypes": false
+          }
+        },
+        "import/external-module-folders": [
+          "../node_modules",
+          "node_modules"
+        ]
+      },
+      "rules": {
+        "@angular-eslint/no-input-rename": [
+          "off"
+        ],
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "type": [
+              "element",
+              "attribute"
+            ],
+            "prefix": "chr",
+            "style": "kebab-case"
+          }
+        ],
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "type": "attribute",
+            "prefix": "chr",
+            "style": "camelCase"
+          }
+        ],
+        "@angular-eslint/no-empty-lifecycle-method": [
+          "warn"
+        ],
+        "newline-before-return": [
+          "off"
+        ],
+        "comma-dangle": [
+          "error",
+          "always-multiline"
+        ],
+        "max-len": [
+          "off"
+        ],
+        "no-shadow": [
+          "off"
+        ],
+        "no-underscore-dangle": [
+          "off"
+        ],
+        "no-multiple-empty-lines": [
+          "error",
+          {
+            "max": 1,
+            "maxEOF": 0,
+            "maxBOF": 0
+          }
+        ],
+        "class-methods-use-this": [
+          "off"
+        ],
+        "no-prototype-builtins": [
+          "warn"
+        ],
+        "no-case-declarations": [
+          "warn"
+        ],
+        "no-useless-escape": [
+          "warn"
+        ],
+        "no-constant-condition": [
+          "warn"
+        ],
+        "no-useless-catch": [
+          "warn"
+        ],
+        "no-global-assign": [
+          "warn"
+        ],
+        "no-async-promise-executor": [
+          "warn"
+        ],
+
+        "rxjs/no-implicit-any-catch": [
+          "off"
+        ],
+
+        "@typescript-eslint/no-shadow": [
+          "off"
+        ],
+        "@typescript-eslint/quotes": [
+          "off"
+        ],
+        "@typescript-eslint/explicit-function-return-type": [
+          "warn",
+          {
+            "allowedNames": [
+              "ngOnChanges",
+              "ngOnInit",
+              "ngAfterViewInit",
+              "ngAfterContentInit",
+              "ngAfterContentChecked",
+              "ngAfterViewChecked",
+              "ngDoCheck",
+              "ngOnDestroy"
+            ],
+            "allowExpressions": true
+          }
+        ],
+        "@typescript-eslint/no-explicit-any": [
+          "error"
+        ],
+        "@typescript-eslint/no-inferrable-types": [
+          "off"
+        ],
+        "@typescript-eslint/prefer-readonly": [
+          "warn"
+        ],
+        "@typescript-eslint/consistent-type-assertions": [
+          "warn",
+          {
+            "assertionStyle": "angle-bracket"
+          }
+        ],
+        "@typescript-eslint/typedef": [
+          "off"
+        ],
+        "@typescript-eslint/type-annotation-spacing": [
+          "error"
+        ],
+        "@typescript-eslint/naming-convention": [
+          "error",
+          {
+            "selector": "enumMember",
+            "format": [
+              "PascalCase"
+            ]
+          },
+          {
+            "selector": "enum",
+            "format": [
+              "PascalCase"
+            ]
+          }
+        ],
+        "@typescript-eslint/member-ordering": [
+          "warn"
+        ],
+        "@typescript-eslint/ban-ts-comment": [
+          "warn"
+        ],
+        "@typescript-eslint/no-empty-function": [
+          "warn"
+        ],
+        "@typescript-eslint/prefer-as-const": [
+          "warn"
+        ],
+        "@typescript-eslint/no-this-alias": [
+          "warn"
+        ],
+        "@typescript-eslint/no-unused-vars": [
+          "warn",
+          {
+            "argsIgnorePattern": "^_",
+            "destructuredArrayIgnorePattern": "^_"
+          }
+        ],
+        "import/order": [
+          "warn",
+          {
+            "groups": [
+              "builtin",
+              "external",
+              "internal",
+              "parent",
+              "sibling",
+              "index"
+            ],
+            "pathGroups": [
+              {
+                "pattern": "@angular/**",
+                "group": "external",
+                "position": "before"
+              },
+              {
+                "pattern": "src/**/*",
+                "position": "after",
+                "group": "internal"
+              }
+            ],
+            "alphabetize": {
+              "order": "asc",
+              "caseInsensitive": false
+            },
+            "newlines-between": "always",
+            "distinctGroup": true
+          }
+        ],
+        "import/first": "error",
+        "import/no-duplicates": "error",
+        "import/no-useless-path-segments": "warn"
+      }
+    },
+    {
+      "files": [
+        "*.html"
+      ],
+      "extends": [
+        "plugin:@angular-eslint/template/recommended"
+      ],
+      "rules": {}
+    },
+    {
+      "files": [
+        "*.html"
+      ],
+      "excludedFiles": [
+        "*inline-template-*.component.html"
+      ],
+      "extends": [
+        "plugin:prettier/recommended"
+      ],
+      "rules": {
+        "prettier/prettier": [
+          "error",
+          {
+            "parser": "angular"
+          }
+        ]
+      }
+    },
+    {
+      "files": [
+        "*.spec.ts"
+      ],
+      "rules": {
+        "@typescript-eslint/dot-notation": "off"
+      }
+    }
+  ]
+}
