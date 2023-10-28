@@ -6,7 +6,6 @@ import { provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
-import { REDUCER_PROVIDER, getInitialState, reducerToken } from '@AppStore';
 import { environment } from '@Environment';
 
 import { AppRoutingModule } from './app/app-routing.module';
@@ -31,12 +30,11 @@ bootstrapApplication(AppComponent, {
       }),
     ),
     provideEffects([]),
-    provideStore(reducerToken, { initialState: getInitialState }),
+    provideStore(),
     provideStoreDevtools({
       maxAge: 25,
       logOnly: environment.production,
     }),
-    REDUCER_PROVIDER,
     provideHttpClient(withInterceptorsFromDi()),
   ],
 }).catch((err: unknown) => console.error(err));
