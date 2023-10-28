@@ -54,7 +54,7 @@
               "element",
               "attribute"
             ],
-            "prefix": "chr",
+            "prefix": "lu",
             "style": "kebab-case"
           }
         ],
@@ -62,7 +62,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "chr",
+            "prefix": "lu",
             "style": "camelCase"
           }
         ],

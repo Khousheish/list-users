@@ -1,5 +1,5 @@
 {
-  "name": "angular-template",
+  "name": "list-users",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -44,6 +44,7 @@
     "@angular-eslint/template-parser": "16.2.0",
     "@angular/cli": "~16.2.7",
     "@angular/compiler-cli": "^16.2.10",
+    "@schematics/angular": "^16.2.8",
     "@types/jasmine": "~4.0.0",
     "@typescript-eslint/eslint-plugin": "^5.59.2",
     "@typescript-eslint/parser": "^5.59.2",
