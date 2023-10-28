@@ -1,1 +1,39 @@
-<p>favorite-users works!</p>
+<p-table [value]="(favoriteUsers$ | async) || []">
+  <ng-template pTemplate="caption"> Favorite Users </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Favorite?</th>
+      <th>Id</th>
+      <th>Avatar</th>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Email</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-user>
+    <tr>
+      <td>
+        <i
+          [ngClass]="{
+            pi: true,
+            'pi-star': true,
+            'pi-star-filled': true
+          }"
+        ></i>
+      </td>
+      <td>{{ user.id }}</td>
+      <td><p-avatar [image]="user.avatar" styleClass="mr-2" size="normal" shape="circle"></p-avatar></td>
+      <td>{{ user.first_name }}</td>
+      <td>{{ user.last_name }}</td>
+      <td>{{ user.email }}</td>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="emptymessage">
+    <tr>
+      <td colspan="6">
+        No favorites selected. Go to the <a routerLink="/users/list">users list</a> page to select favorites
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
