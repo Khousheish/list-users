@@ -16,9 +16,10 @@
         <i
           [ngClass]="{
             pi: true,
-            'pi-star': true,
-            'pi-star-filled': true
+            'pi-star': !user.isFavorite,
+            'pi-star-fill': user.isFavorite
           }"
+          (click)="toggleFavorite(user)"
         ></i>
       </td>
       <td>{{ user.id }}</td>

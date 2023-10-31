@@ -28,7 +28,7 @@ export const usersReducer = createReducer(
     const updatedUsers = action.data.map((user) => {
       return {
         ...user,
-        isFavorite: false,
+        isFavorite: state.favorites.some((favorite) => favorite.id === user.id),
       };
     });
 
@@ -65,7 +65,25 @@ export const usersReducer = createReducer(
 
     return {
       ...state,
-      items: updatedUsers,
+      users: updatedUsers,
+      favorites: [...state.favorites, { ...action.user, isFavorite: true }],
+    };
+  }),
+  on(UsersActions.removeUserFromFavorites, (state, action) => {
+    const updatedUsers = state.users.map((user) => {
+      if (user.id === action.user.id) {
+        return {
+          ...user,
+          isFavorite: false,
+        };
+      }
+      return user;
+    });
+
+    return {
+      ...state,
+      users: updatedUsers,
+      favorites: state.favorites.filter((favorite) => favorite.id !== action.user.id),
     };
   }),
 );

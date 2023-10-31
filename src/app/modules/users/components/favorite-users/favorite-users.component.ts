@@ -20,4 +20,7 @@ export class FavoriteUsersComponent {
   protected favoriteUsers$: Observable<User[]> = this.userFacade.favoriteUsers$;
 
   constructor(private readonly userFacade: UsersFacade) {}
+  toggleFavorite(user: User): void {
+    user.isFavorite ? this.userFacade.removeUserFromFavorites(user) : this.userFacade.addUserToFavorite(user);
+  }
 }
