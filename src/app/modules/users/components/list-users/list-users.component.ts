@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DestroyRef, OnInit, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { faker } from '@faker-js/faker';
+import { MessageService } from 'primeng/api';
 import { AvatarModule } from 'primeng/avatar';
 import { TableModule } from 'primeng/table';
 import { Observable, interval, tap } from 'rxjs';
@@ -13,12 +14,16 @@ import { UsersFacade } from '@Modules/users/store/users.facade';
   selector: 'lu-list-users',
   standalone: true,
   imports: [CommonModule, TableModule, AvatarModule],
+  providers: [MessageService],
   templateUrl: './list-users.component.html',
   styleUrls: ['./list-users.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ListUsersComponent implements OnInit {
-  protected user$: Observable<User[]> = this.userFacade.users$;
+  protected users$: Observable<User[]> = this.userFacade.users$;
+  protected usersPending$: Observable<boolean> = this.userFacade.usersPending$;
+
+  // used to keep generating unique ids to mock a real server
   private userId: number = 11;
 
   private readonly destroyRef = inject(DestroyRef);

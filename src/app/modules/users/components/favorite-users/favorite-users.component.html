@@ -1,4 +1,4 @@
-<p-table [value]="(favoriteUsers$ | async) || []">
+<p-table [value]="(favoriteUsers$ | async) || []" [loading]="(usersPending$ | async) || false">
   <ng-template pTemplate="caption"> Favorite Users </ng-template>
   <ng-template pTemplate="header">
     <tr>

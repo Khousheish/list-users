@@ -18,6 +18,7 @@ import { UsersFacade } from '@Modules/users/store/users.facade';
 })
 export class FavoriteUsersComponent {
   protected favoriteUsers$: Observable<User[]> = this.userFacade.favoriteUsers$;
+  protected usersPending$: Observable<boolean> = this.userFacade.usersPending$;
 
   constructor(private readonly userFacade: UsersFacade) {}
 

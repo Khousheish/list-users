@@ -38,7 +38,6 @@ export class UsersEffects {
     () =>
       this.actions$.pipe(
         ofType(UsersActions.addUserToFavoritesFailure),
-        tap(console.log),
         tap(() => {
           this.messageService.add({
             key: 'globalToast',

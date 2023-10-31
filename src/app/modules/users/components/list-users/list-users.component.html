@@ -1,4 +1,4 @@
-<p-table [value]="(user$ | async) || []">
+<p-table [value]="(users$ | async) || []" [loading]="(usersPending$ | async) || false">
   <ng-template pTemplate="caption"> Users </ng-template>
   <ng-template pTemplate="header">
     <tr>
