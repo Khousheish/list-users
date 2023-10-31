@@ -52,7 +52,7 @@ export const usersReducer = createReducer(
       users: updatedUsers,
     };
   }),
-  on(UsersActions.addUserToFavorites, (state, action) => {
+  on(UsersActions.addUserToFavoritesSuccess, (state, action) => {
     const updatedUsers = state.users.map((user) => {
       if (user.id === action.user.id) {
         return {

@@ -1,7 +1,8 @@
-import { NgModule } from '@angular/core';
+import { NgModule, importProvidersFrom } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { provideEffects } from '@ngrx/effects';
 import { provideState } from '@ngrx/store';
+import { ToastModule } from 'primeng/toast';
 
 import { AppRoutes, UserRoutes } from '@Enums/routes.enum';
 import { listUsersResolver } from '@Modules/users/components/list-users/list-users.resolver';
@@ -33,7 +34,7 @@ const routes: Routes = [
         redirectTo: UserRoutes.List,
       },
     ],
-    providers: [provideState(usersFeature), provideEffects([UsersEffects])],
+    providers: [provideState(usersFeature), provideEffects([UsersEffects]), importProvidersFrom(ToastModule)],
   },
   {
     path: AppRoutes.Empty,

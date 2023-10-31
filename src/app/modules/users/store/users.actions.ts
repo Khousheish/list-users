@@ -17,6 +17,8 @@ export const UsersActions = createActionGroup({
     'Add Random User': props<AddRandomUserProps>(),
 
     'Add User To Favorites': props<AddUserToFavoritesProps>(),
+    'Add User To Favorites Success': props<AddUserToFavoritesProps>(),
+    'Add User To Favorites Failure': emptyProps(),
 
     'Remove User From Favorites': props<RemoveUserToFavoritesProps>(),
   },

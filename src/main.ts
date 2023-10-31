@@ -1,10 +1,13 @@
 import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { enableProdMode, importProvidersFrom } from '@angular/core';
 import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideEffects } from '@ngrx/effects';
 import { provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
 
 import { environment } from '@Environment';
 
@@ -18,8 +21,9 @@ if (environment.production) {
 
 bootstrapApplication(AppComponent, {
   providers: [
-    importProvidersFrom(
+    importProvidersFrom([
       BrowserModule,
+      BrowserAnimationsModule,
       AppRoutingModule,
       TranslateModule.forRoot({
         loader: {
@@ -28,7 +32,9 @@ bootstrapApplication(AppComponent, {
           deps: [HttpClient],
         },
       }),
-    ),
+      ToastModule,
+    ]),
+    MessageService,
     provideEffects([]),
     provideStore(),
     provideStoreDevtools({
