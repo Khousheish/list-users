@@ -20,7 +20,7 @@ export const initialState: UsersState = {
 
 export const usersReducer = createReducer(
   initialState,
-  on(UsersActions.getUsers, (state) => ({
+  on(UsersActions.getUsers, UsersActions.addUserToFavorites, (state) => ({
     ...state,
     pending: true,
   })),
@@ -38,7 +38,7 @@ export const usersReducer = createReducer(
       users: updatedUsers,
     };
   }),
-  on(UsersActions.getUsersFailure, (state) => ({
+  on(UsersActions.getUsersFailure, UsersActions.addUserToFavoritesFailure, (state) => ({
     ...state,
     pending: false,
   })),
@@ -65,6 +65,7 @@ export const usersReducer = createReducer(
 
     return {
       ...state,
+      pending: false,
       users: updatedUsers,
       favorites: [...state.favorites, { ...action.user, isFavorite: true }],
     };
